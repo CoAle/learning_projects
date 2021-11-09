@@ -17,14 +17,12 @@ valid_choices = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 # The human player makes a choice, the board gets updated and the choice is removed from the valid choices
 def human_player():
     choice = input('Make your move! Choose a number from 1 to 9: ')
-    board_index = int(choice) - 1
     if choice in valid_choices:
+        board_index = int(choice) - 1
         board[board_index] = 'O'
         valid_choices.remove(choice)
     else:
-        choice = input('Invalid choice, please choose an empty place on the board: ')
-        board[board_index] = 'O'
-        valid_choices.remove(choice)
+        return human_player()
 
 # The random player makes a random choice, the board gets updated and the choice is removed from the valid choices
 def random_player():
